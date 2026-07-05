@@ -37,8 +37,8 @@ export const CONTACT_INFO = {
   phone: '+8801890642735',
 };
 
-export const RESUME_PDF = '/img/numan resume.pdf';
-export const CV_PDF = '/img/Rashed_Mojammel_CV.pdf';
+export const RESUME_PDF = '/img/Rashedmojammel_CV.pdf';
+export const CV_PDF = '/img/Rashedmojammel_CV.pdf';
 
 export const VIDEO_CV_YOUTUBE_ID = '7fRzncCnhaY';
 
