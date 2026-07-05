@@ -1,6 +1,3 @@
-// Knowledge base for the local "Ask Me Anything" widget.
-// Add a new topic by pushing another { keys: [...], answer: '...' } entry —
-// no other code needs to change.
 
 export const RESPONSES = [
   {
