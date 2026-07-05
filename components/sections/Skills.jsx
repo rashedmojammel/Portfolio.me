@@ -1,7 +1,9 @@
 'use client';
 
-import Reveal from '@/components/ui/Reveal';
-import { skillCategories } from '@/data/skillsData';
+import { skillCategories } from '../../data/skillsData';
+// import Reveal from '@/components/ui/Reveal';
+// import { skillCategories } from '@/data/skillsData';
+import Reveal from '../ui/Reveal';
 
 function handleShimmerMove(e) {
   const card = e.currentTarget;
@@ -22,22 +24,26 @@ export default function Skills() {
       </Reveal>
 
       <Reveal className="skills-grid">
-        {skillCategories.map((cat) => (
-          <div className="skill-card" key={cat.title} onMouseMove={handleShimmerMove}>
-            <div className="skill-card-icon"><i className={cat.icon}></i></div>
-            <h3>{cat.title}</h3>
-            <p>{cat.desc}</p>
-            <div className="skill-tags">
-              {cat.tags.map((tag) =>
-                tag.textOnly ? (
-                  <span className="tag-text" key={tag.label}>{tag.label}</span>
-                ) : (
-                  <span key={tag.label}><i className={tag.icon}></i> {tag.label}</span>
-                )
-              )}
+        {skillCategories.map((cat) => {
+          const CatIcon = cat.icon;
+          return (
+            <div className="skill-card" key={cat.title} onMouseMove={handleShimmerMove}>
+              <div className="skill-card-icon">{CatIcon && <CatIcon />}</div>
+              <h3>{cat.title}</h3>
+              <p>{cat.desc}</p>
+              <div className="skill-tags">
+                {cat.tags.map((tag) => {
+                  const TagIcon = tag.icon;
+                  return (
+                    <span key={tag.label}>
+                      {TagIcon && <TagIcon />} {tag.label}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </Reveal>
     </section>
   );
