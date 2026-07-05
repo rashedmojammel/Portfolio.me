@@ -1,7 +1,62 @@
 'use client';
 
 import { useEffect } from 'react';
+import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
+
+// Modal media priority: YouTube video > screenshot image > plain
+// "Visit Live Site" panel (used only when neither a video nor a
+// screenshot is available for the project).
+function ModalMedia({ project }) {
+  if (project.youtubeId) {
+    return (
+      <iframe
+        src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&rel=0`}
+        title={project.title}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
+    );
+  }
+
+  if (project.screenshot) {
+    return (
+      <div className="modal-screenshot-wrap">
+        <Image
+          src={project.screenshot}
+          alt={project.title}
+          fill
+          sizes="(max-width: 768px) 100vw, 800px"
+          style={{ objectFit: 'cover' }}
+        />
+        {project.liveUrl && (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="modal-screenshot-cta"
+          >
+            <i className="fas fa-arrow-up-right-from-square"></i> Visit Live Site
+          </a>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <a
+      href={project.liveUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="modal-live-preview"
+    >
+      <i className="fas fa-globe"></i>
+      <span>Visit Live Site</span>
+      <i className="fas fa-arrow-up-right-from-square"></i>
+    </a>
+  );
+}
 
 export default function ProjectModal({ project, onClose }) {
   useEffect(() => {
@@ -40,22 +95,20 @@ export default function ProjectModal({ project, onClose }) {
               <i className="fas fa-times"></i>
             </button>
             <div className="modal-video-wrap">
-              <iframe
-                src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&rel=0`}
-                title={project.title}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              <ModalMedia project={project} />
             </div>
             <div className="modal-content">
               <span className="p-tag">{project.modalTag}</span>
               <h2 id={`${project.id}-title`}>{project.title}</h2>
               <p>{project.description}</p>
               <div className="modal-tech">
-                {project.tech.map((t) => (
-                  <span key={t.label}><i className={t.icon}></i> {t.label}</span>
-                ))}
+                {project.tech.map((t) =>
+                  t.textOnly ? (
+                    <span key={t.label}>{t.label}</span>
+                  ) : (
+                    <span key={t.label}><i className={t.icon}></i> {t.label}</span>
+                  )
+                )}
               </div>
               {project.links.map((link) => (
                 <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className="btn btn-gold">

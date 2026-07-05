@@ -19,6 +19,7 @@ export const projects = [
       { label: 'BetterAuth', textOnly: true },
       { icon: 'fas fa-wind', label: 'Tailwind CSS' },
     ],
+     screenshot: '/img/projects/Fable.png',
     liveUrl: 'https://fable-ebook-sharing-platform-client.vercel.app/',
     links: [
       { label: 'GitHub Repository', icon: 'fab fa-github', href: 'https://github.com/rashedmojammel/Fable-Ebook-Sharing-Platform-Client' },
@@ -41,6 +42,7 @@ export const projects = [
       { label: 'BetterAuth', textOnly: true },
       { icon: 'fas fa-wind', label: 'Tailwind CSS' },
     ],
+    screenshot: '/img/projects/petadoption.png',
     liveUrl: 'https://pet-adoption-platform-client-w1g8.vercel.app/',
     links: [
       { label: 'GitHub Repository', icon: 'fab fa-github', href: 'https://github.com/rashedmojammel/Pet-Adoption-Platform---Client' },
@@ -64,6 +66,7 @@ export const projects = [
     { icon: 'fas fa-cubes', label: 'Repository Pattern' },
     { icon: 'fab fa-bootstrap', label: 'Bootstrap' },
   ],
+  screenshot: '/img/projects/foody.png',
   links: [
     {
       label: 'GitHub Repository',

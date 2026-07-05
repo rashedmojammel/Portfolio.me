@@ -32,6 +32,44 @@ function handleTiltLeave(e) {
   card.style.transition = 'transform 0.5s ease, border-color 0.3s ease, box-shadow 0.3s ease';
 }
 
+// Card thumbnail priority: YouTube video > screenshot image > plain "Live
+// Website" fallback (no image supplied at all).
+function CardThumb({ project }) {
+  if (project.youtubeId) {
+    return (
+      <>
+        <Image
+          src={`https://img.youtube.com/vi/${project.youtubeId}/${project.thumbQuality}.jpg`}
+          alt={project.title}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          style={{ objectFit: 'cover' }}
+        />
+        <div className="p-card-play"><i className="fas fa-play"></i></div>
+      </>
+    );
+  }
+
+  if (project.screenshot) {
+    return (
+      <Image
+        src={project.screenshot}
+        alt={project.title}
+        fill
+        sizes="(max-width: 768px) 100vw, 33vw"
+        style={{ objectFit: 'cover' }}
+      />
+    );
+  }
+
+  return (
+    <div className="p-card-live-thumb">
+      <i className="fas fa-globe"></i>
+      <span>Live Website</span>
+    </div>
+  );
+}
+
 export default function Portfolio() {
   const [activeProject, setActiveProject] = useState(null);
   const [showAll, setShowAll] = useState(false);
@@ -59,23 +97,7 @@ export default function Portfolio() {
             onMouseLeave={handleTiltLeave}
           >
             <div className="p-card-thumb">
-              {project.youtubeId ? (
-                <>
-                  <Image
-                    src={`https://img.youtube.com/vi/${project.youtubeId}/${project.thumbQuality}.jpg`}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    style={{ objectFit: 'cover' }}
-                  />
-                  <div className="p-card-play"><i className="fas fa-play"></i></div>
-                </>
-              ) : (
-                <div className="p-card-live-thumb">
-                  <i className="fas fa-globe"></i>
-                  <span>Live Website</span>
-                </div>
-              )}
+              <CardThumb project={project} />
             </div>
             <div className="p-card-body">
               <span className="p-tag">{project.tag}</span>
