@@ -9,7 +9,7 @@ import Footer from '@/components/layout/Footer';
 import SmoothScroll from '@/components/layout/SmoothScroll';
 
 import Hero from '@/components/home/Hero';
-import VideoCV from '@/components/sections/VideoCV';
+// import VideoCV from '@/components/sections/VideoCV';
 import About from '@/components/sections/About';
 // import Academic from '@/components/sections/Academic';
 import Portfolio from '@/components/sections/Portfolio';
@@ -35,7 +35,7 @@ export default function Home() {
       <Header />
 
       <Hero />
-      <VideoCV />
+      {/* <VideoCV /> */}
       <About />
       <Portfolio />
       <Skills />
