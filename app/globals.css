@@ -1,0 +1,28 @@
+/* Global stylesheet entry point.
+   The original design is preserved as-is in styles.css.
+   theme-aurora.css is an alternate theme — uncomment the import below to use it. */
+
+@import './styles.css';
+/* @import './theme-aurora.css'; */
+
+/* Point the design system's font variables at the self-hosted fonts
+   loaded via next/font in app/layout.js (see --font-cormorant /
+   --font-dm-sans below), instead of the Google Fonts <link> tag that
+   used to load them. */
+:root {
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-body: var(--font-dm-sans), sans-serif;
+}
+
+/* Respect the OS-level "reduce motion" setting for every CSS animation/
+   transition site-wide (orbit spin, loader bars, hover transitions, etc).
+   JS-driven effects (particles, custom cursor, Lenis) are gated separately
+   in their own components. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
