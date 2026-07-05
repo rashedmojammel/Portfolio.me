@@ -1181,6 +1181,11 @@ body.light-mode .acad-card-desc  { color: #555; }
   position: relative;
   overflow: hidden;
 }
+.portfolio-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
 
 /* Top shimmer line */
 .portfolio::before {
@@ -1530,6 +1535,121 @@ body.light-mode .acad-card-desc  { color: #555; }
 .form-group textarea:focus {
   border-color: rgba(201,168,76,0.5);
   background: var(--surface);
+}
+/* ── GITHUB ACTIVITY SECTION ── */
+.github-activity {
+  position: relative;
+  padding: var(--section-pad, 120px 8vw);
+}
+
+.github-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.github-card-top {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.github-avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.github-card-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.github-card-info p {
+  color: rgba(242,237,228,0.75);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  max-width: 480px;
+}
+
+.github-stats-row {
+  display: flex;
+  gap: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.github-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.github-stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.github-stat-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(242,237,228,0.55);
+}
+
+.github-charts {
+  max-width: 900px;
+  margin: 32px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.github-stats-img,
+.github-contrib-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.github-stats-img {
+  flex: 1 1 420px;
+}
+
+.github-contrib-img {
+  flex: 1 1 360px;
+}
+
+@media (max-width: 640px) {
+  .github-card-top {
+    flex-direction: column;
+    text-align: center;
+  }
+  .github-card-info p {
+    max-width: none;
+  }
+  .github-stats-row {
+    justify-content: center;
+  }
 }
 
 .submit-btn { width: 100%; justify-content: center; }
@@ -3932,6 +4052,7 @@ body.light-mode .skills-orb-container::after  { border-color: rgba(168,114,14,0.
   font-size: 0.8rem;
   flex-shrink: 0;
 }
+
 
 #ama-input {
   flex: 1;

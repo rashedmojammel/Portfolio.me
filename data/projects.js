@@ -3,6 +3,76 @@
 
 export const projects = [
   {
+    id: 'fable',
+    tag: 'Next.js · Node.js · Express · MongoDB · Stripe',
+    title: 'Fable — Digital Ebook Sharing Platform',
+    cardDesc: 'Production-ready full-stack ebook platform with payments, auth & admin tools.',
+    modalTag: 'Full-Stack Web Application',
+    description:
+      'Architected and developed a production-ready full-stack ebook sharing platform as a solo project using the MERN stack. Designed 18+ REST APIs and 6 MongoDB collections with secure authentication and role-based access control (BetterAuth). Integrated Stripe for payments, Nodemailer for transactional email, and built out bookmarks, user dashboards, and an admin panel. Improved performance using SSR, dynamic rendering, and optimized data-fetching strategies.',
+    tech: [
+      { icon: 'fab fa-react', label: 'Next.js' },
+      { icon: 'fab fa-node-js', label: 'Node.js' },
+      { label: 'Express.js', textOnly: true },
+      { icon: 'fas fa-database', label: 'MongoDB' },
+      { icon: 'fa-brands fa-stripe', label: 'Stripe' },
+      { label: 'BetterAuth', textOnly: true },
+      { icon: 'fas fa-wind', label: 'Tailwind CSS' },
+    ],
+    liveUrl: 'https://fable-ebook-sharing-platform-client.vercel.app/',
+    links: [
+      { label: 'GitHub Repository', icon: 'fab fa-github', href: 'https://github.com/rashedmojammel/Fable-Ebook-Sharing-Platform-Client' },
+      { label: 'Live Site', icon: 'fa-solid fa-link', href: 'https://fable-ebook-sharing-platform-client.vercel.app/' },
+    ],
+  },
+  {
+    id: 'petnest',
+    tag: 'Next.js · Node.js · Express · MongoDB',
+    title: 'PetNest — Pet Adoption Platform',
+    cardDesc: 'Full-stack pet adoption platform with search/filter and adoption workflows.',
+    modalTag: 'Full-Stack Web Application',
+    description:
+      'Developed and deployed a full-stack pet adoption platform using Next.js and the MERN stack. Designed scalable REST APIs and MongoDB schemas to manage pet listings and adoption workflows, including request approval/rejection with cascading logic. Built reusable, responsive UI components with Framer Motion animations, debounced search/filter, and a wishlist feature backed by localStorage — following modern React development practices.',
+    tech: [
+      { icon: 'fab fa-react', label: 'Next.js' },
+      { icon: 'fab fa-node-js', label: 'Node.js' },
+      { label: 'Express.js', textOnly: true },
+      { icon: 'fas fa-database', label: 'MongoDB' },
+      { label: 'BetterAuth', textOnly: true },
+      { icon: 'fas fa-wind', label: 'Tailwind CSS' },
+    ],
+    liveUrl: 'https://pet-adoption-platform-client-w1g8.vercel.app/',
+    links: [
+      { label: 'GitHub Repository', icon: 'fab fa-github', href: 'https://github.com/rashedmojammel/Pet-Adoption-Platform---Client' },
+      { label: 'Live Site', icon: 'fa-solid fa-link', href: 'https://pet-adoption-platform-client-w1g8.vercel.app/' },
+    ],
+  },
+  {
+  id: 'foodyy',
+  tag: 'ASP.NET Core MVC · C# · EF Core · SQL Server',
+  title: 'Foodyy — Online Food Ordering System',
+  cardDesc: 'Multi-module food ordering platform built with ASP.NET Core MVC and 3-Tier Architecture.',
+  modalTag: 'Web Application',
+  description:
+    'Developed a multi-module online food ordering system using ASP.NET Core MVC and C#. Implemented a clean 3-Tier Architecture with Repository Pattern and Dependency Injection to improve maintainability and scalability. Designed relational database schemas and implemented core business logic using Entity Framework Core and SQL Server. The system includes user authentication, food browsing, cart management, order processing, and administrative management features.',
+  tech: [
+    { icon: 'fas fa-hashtag', label: 'C#' },
+    { icon: 'fas fa-layer-group', label: 'ASP.NET Core MVC' },
+    { icon: 'fas fa-database', label: 'SQL Server' },
+    { icon: 'fas fa-server', label: 'Entity Framework Core' },
+    { icon: 'fas fa-sitemap', label: '3-Tier Architecture' },
+    { icon: 'fas fa-cubes', label: 'Repository Pattern' },
+    { icon: 'fab fa-bootstrap', label: 'Bootstrap' },
+  ],
+  links: [
+    {
+      label: 'GitHub Repository',
+      icon: 'fab fa-github',
+      href: 'https://github.com/rashedmojammel/OnlineFoodOrderingSystem.git',
+    },
+  ],
+},
+  {
     id: 'm1',
     tag: 'C#',
     title: 'Inventory Management System',

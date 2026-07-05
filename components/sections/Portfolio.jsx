@@ -6,6 +6,8 @@ import Reveal from '@/components/ui/Reveal';
 import ProjectModal from '@/components/modals/ProjectModal';
 import { projects } from '../../data/projects';
 
+const INITIAL_COUNT = 6;
+
 function tiltAllowed() {
   return (
     typeof window !== 'undefined' &&
@@ -32,6 +34,10 @@ function handleTiltLeave(e) {
 
 export default function Portfolio() {
   const [activeProject, setActiveProject] = useState(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleProjects = showAll ? projects : projects.slice(0, INITIAL_COUNT);
+  const hasMore = projects.length > INITIAL_COUNT;
 
   return (
     <section className="portfolio" id="portfolio">
@@ -44,7 +50,7 @@ export default function Portfolio() {
       </Reveal>
 
       <Reveal className="portfolio-grid">
-        {projects.map((project) => (
+        {visibleProjects.map((project) => (
           <article
             className="p-card"
             key={project.id}
@@ -53,14 +59,23 @@ export default function Portfolio() {
             onMouseLeave={handleTiltLeave}
           >
             <div className="p-card-thumb">
-              <Image
-                src={`https://img.youtube.com/vi/${project.youtubeId}/${project.thumbQuality}.jpg`}
-                alt={project.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                style={{ objectFit: 'cover' }}
-              />
-              <div className="p-card-play"><i className="fas fa-play"></i></div>
+              {project.youtubeId ? (
+                <>
+                  <Image
+                    src={`https://img.youtube.com/vi/${project.youtubeId}/${project.thumbQuality}.jpg`}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <div className="p-card-play"><i className="fas fa-play"></i></div>
+                </>
+              ) : (
+                <div className="p-card-live-thumb">
+                  <i className="fas fa-globe"></i>
+                  <span>Live Website</span>
+                </div>
+              )}
             </div>
             <div className="p-card-body">
               <span className="p-tag">{project.tag}</span>
@@ -71,6 +86,22 @@ export default function Portfolio() {
           </article>
         ))}
       </Reveal>
+
+      {hasMore && (
+        <div className="portfolio-toggle-wrap">
+          <button
+            type="button"
+            className="btn btn-outline"
+            onClick={() => setShowAll((v) => !v)}
+          >
+            {showAll ? (
+              <>Show Less <i className="fas fa-arrow-up"></i></>
+            ) : (
+              <>View All Projects <i className="fas fa-arrow-right"></i></>
+            )}
+          </button>
+        </div>
+      )}
 
       <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
     </section>

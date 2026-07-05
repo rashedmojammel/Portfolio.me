@@ -1,16 +1,22 @@
 // Central place for site-wide constants — nav links, socials, contact
 // details, resume/CV paths. Change your info once, here.
 
+// Add near the top with other nav-related constants:
 export const NAV_LINKS = [
   { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
   { href: '#academic', label: 'Academic' },
   { href: '#portfolio', label: 'Projects' },
   { href: '#skills', label: 'Skills' },
+ 
   { href: '#certificates', label: 'Certificates' },
   { href: '#hobbies', label: 'Hobbies' },
+   { href: '#github', label: 'GitHub' },
   { href: '#contact', label: 'Contact' },
 ];
+
+// Add anywhere below your other exports:
+export const GITHUB_USERNAME = 'rashedmojammel';
 
 export const SOCIAL_LINKS = [
   { icon: 'fab fa-facebook-f', label: 'Facebook', href: 'https://www.facebook.com/share/1DcnFQG8oF/?mibextid=wwXIfr' },

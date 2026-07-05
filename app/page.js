@@ -11,12 +11,13 @@ import SmoothScroll from '@/components/layout/SmoothScroll';
 import Hero from '@/components/home/Hero';
 import VideoCV from '@/components/sections/VideoCV';
 import About from '@/components/sections/About';
-import Academic from '@/components/sections/Academic';
+// import Academic from '@/components/sections/Academic';
 import Portfolio from '@/components/sections/Portfolio';
 import Skills from '@/components/sections/Skills';
 import Contact from '@/components/sections/Contact';
 
 import AIChatWidgetLoader from '@/components/ai-chat/AIChatWidgetLoader';
+import GithubActivity from '@/components/sections/GithubActivity';
 
 // Below-the-fold sections: still server-rendered (good for SEO), but split
 // into their own JS chunk so they aren't part of the initial bundle the
@@ -36,11 +37,11 @@ export default function Home() {
       <Hero />
       <VideoCV />
       <About />
-      <Academic />
       <Portfolio />
       <Skills />
       <Certificates />
       <Hobbies />
+      <GithubActivity />
       <Contact />
 
       <Footer />
