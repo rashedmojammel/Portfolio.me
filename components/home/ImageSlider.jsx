@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { homeImages } from '@/data/skillsOrbit';
+import { homeImages } from '../../data/skillsOrbit';
 
 export default function ImageSlider() {
   const [current, setCurrent] = useState(0);

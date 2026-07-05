@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Reveal from '@/components/ui/Reveal';
 import ProjectModal from '@/components/modals/ProjectModal';
-import { projects } from '@/data/projects';
+import { projects } from '../../data/projects';
 
 function tiltAllowed() {
   return (

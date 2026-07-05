@@ -1,4 +1,4 @@
-import { orbitSkills } from '@/data/skillsOrbit';
+import { orbitSkills } from '../../data/skillsOrbit';
 
 /**
  * The orbiting skill-icon animation behind the hero name.

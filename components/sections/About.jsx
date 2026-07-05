@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Reveal from '@/components/ui/Reveal';
 import EduModal from '@/components/modals/EduModal';
 import { education, basicSkills, softSkills } from '@/data/education';
-import { CV_PDF } from '@/data/siteConfig';
+import { CV_PDF } from '../../data/siteConfig';
 
 const TABS = [
   { id: 'education', label: 'Education' },

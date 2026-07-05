@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Reveal from '@/components/ui/Reveal';
-import { CONTACT_INFO, CONTACT_SOCIAL_LINKS, GOOGLE_SHEET_SCRIPT_URL } from '@/data/siteConfig';
+import { CONTACT_INFO, CONTACT_SOCIAL_LINKS, GOOGLE_SHEET_SCRIPT_URL } from '../../data/siteConfig';
 
 export default function Contact() {
   const [status, setStatus] = useState({ text: '', color: '' });
