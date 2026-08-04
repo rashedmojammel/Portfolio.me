@@ -1746,7 +1746,8 @@ body.light-mode .acad-card-desc  { color: #555; }
 }
 
 .github-stats-img,
-.github-contrib-img {
+.github-contrib-img,
+.github-contrib-graph {
   max-width: 100%;
   height: auto;
   border-radius: var(--radius);
@@ -1757,8 +1758,18 @@ body.light-mode .acad-card-desc  { color: #555; }
   flex: 1 1 420px;
 }
 
-.github-contrib-img {
+.github-contrib-img,
+.github-contrib-graph {
   flex: 1 1 360px;
+}
+
+.github-contrib-graph {
+  /* No intrinsic size is known ahead of load (third-party image, no
+     width/height attributes) — reserving an approximate aspect ratio
+     avoids a layout shift when it loads in. */
+  aspect-ratio: 3 / 1;
+  object-fit: contain;
+  background: var(--bg-card);
 }
 
 @media (max-width: 640px) {
