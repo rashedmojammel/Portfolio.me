@@ -12,6 +12,7 @@ import Hero from '@/components/home/Hero';
 // import VideoCV from '@/components/sections/VideoCV';
 import About from '@/components/sections/About';
 // import Academic from '@/components/sections/Academic';
+import Parallax from '@/components/sections/Parallax';
 import Portfolio from '@/components/sections/Portfolio';
 import Skills from '@/components/sections/Skills';
 import Contact from '@/components/sections/Contact';
@@ -38,6 +39,7 @@ export default function Home() {
       <Hero />
       {/* <VideoCV /> */}
       <About />
+      <Parallax />
       <Portfolio />
       <Skills />
       <Certificates />

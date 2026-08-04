@@ -1343,6 +1343,108 @@ body.light-mode .acad-card-desc  { color: #555; }
 }
 
 
+/* ── 9b. PARALLAX ───────────────────────────────── */
+.parallax {
+  position: relative;
+  width: 100%;
+}
+
+.parallax__header {
+  position: relative;
+  width: 100%;
+  /* svh, not vh — avoids the jump when mobile browser chrome hides on scroll */
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.parallax__visuals {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.parallax__layers {
+  position: absolute;
+  inset: 0;
+  /* The tween moves layers vertically; without this they'd escape the header */
+  overflow: hidden;
+}
+
+.parallax__layer-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  /* Layers are transformed every frame — promote them to their own GPU layer
+     so the browser doesn't repaint the whole section. */
+  will-change: transform;
+}
+
+.parallax__layer-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.parallax__title {
+  margin: 0;
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  font-size: clamp(2.5rem, 11vw, 9rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--text, #fff);
+}
+
+/* Blends the bottom of the artwork into the section that follows. */
+.parallax__fade {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 25vh;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--bg, #080510) 85%
+  );
+  pointer-events: none;
+}
+
+/* Hides the 1px seam some browsers render at the bottom of the images. */
+.parallax__black-line-overflow {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -2px;
+  height: 4px;
+  background: var(--bg, #080510);
+  z-index: 2;
+}
+
+@media (max-width: 600px) {
+  .parallax__header {
+    height: 70svh;
+    min-height: 420px;
+  }
+}
+
+/* Your global reduced-motion rule flattens transitions, but the JS bails out
+   before creating the timeline, so layers just sit in their start position. */
+@media (prefers-reduced-motion: reduce) {
+  .parallax__layer-img,
+  .parallax__layer-title {
+    will-change: auto;
+  }
+}
+
+
 /* ── 10. SKILLS ─────────────────────────────────── */
 .skills {
   padding: 120px 5vw;
