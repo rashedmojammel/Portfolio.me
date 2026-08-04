@@ -9,9 +9,9 @@ import Footer from '@/components/layout/Footer';
 import SmoothScroll from '@/components/layout/SmoothScroll';
 
 import Hero from '@/components/home/Hero';
-// import VideoCV from '@/components/sections/VideoCV';
+// import VideoCV from '@/components/sections/VideoCV'; // kept for later, not wired up yet
 import About from '@/components/sections/About';
-// import Academic from '@/components/sections/Academic';
+import Academic from '@/components/sections/Academic';
 import Parallax from '@/components/sections/Parallax';
 import Portfolio from '@/components/sections/Portfolio';
 import Skills from '@/components/sections/Skills';
@@ -39,6 +39,7 @@ export default function Home() {
         <Hero />
         {/* <VideoCV /> */}
         <About />
+        <Academic />
         <Parallax />
         <Portfolio />
         <Skills />
