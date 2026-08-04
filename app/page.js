@@ -18,7 +18,6 @@ import Contact from '@/components/sections/Contact';
 
 import AIChatWidgetLoader from '@/components/ai-chat/AIChatWidgetLoader';
 import GithubActivity from '@/components/sections/GithubActivity';
-import StarField from '@/components/layout/StarField';
 
 // Below-the-fold sections: still server-rendered (good for SEO), but split
 // into their own JS chunk so they aren't part of the initial bundle the
@@ -29,8 +28,7 @@ const Hobbies = dynamic(() => import('@/components/sections/Hobbies'));
 export default function Home() {
   return (
     <>
-      {/* <StarField /> */}
-      <StarField />
+      {/* StarField is rendered once, site-wide, in app/layout.js */}
       <SmoothScroll />
       <Loader />
       <ScrollProgress />
