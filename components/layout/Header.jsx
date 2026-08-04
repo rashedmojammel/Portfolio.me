@@ -27,24 +27,60 @@ export default function Header() {
 
   const closeMenu = () => setMenuOpen(false);
 
-  // Active nav link on scroll + sticky header shadow
+  // Active nav link on scroll + sticky header shadow.
+  // Section offsets are measured once (and on resize/load) instead of on
+  // every scroll event — reading offsetTop/offsetHeight per section per
+  // scroll frame was forcing a synchronous layout on every pixel of scroll.
   useEffect(() => {
-    const sections = document.querySelectorAll('section[id], div[id]');
+    const sections = Array.from(document.querySelectorAll('section[id], div[id]'));
+    let bounds = [];
 
-    const onScroll = () => {
-      const scrollY = window.scrollY + 100;
-      sections.forEach((section) => {
-        if (scrollY >= section.offsetTop && scrollY < section.offsetTop + section.offsetHeight) {
-          setActiveHref(`#${section.getAttribute('id')}`);
-        }
-      });
+    const measure = () => {
+      bounds = sections.map((section) => ({
+        id: section.getAttribute('id'),
+        top: section.offsetTop,
+        bottom: section.offsetTop + section.offsetHeight,
+      }));
+    };
+
+    const applyScrollState = () => {
+      const scrollY = window.scrollY;
+      const probe = scrollY + 100;
+      const active = bounds.find((b) => probe >= b.top && probe < b.bottom);
+      if (active) setActiveHref(`#${active.id}`);
       if (headerRef.current) {
-        headerRef.current.style.boxShadow = window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,0.35)' : 'none';
+        headerRef.current.style.boxShadow = scrollY > 20 ? '0 4px 30px rgba(0,0,0,0.35)' : 'none';
       }
     };
 
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        applyScrollState();
+        ticking = false;
+      });
+    };
+
+    let resizeTimeout;
+    const onResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(measure, 150);
+    };
+
+    measure();
+    applyScrollState();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('resize', onResize);
+    window.addEventListener('load', measure);
+
+    return () => {
+      clearTimeout(resizeTimeout);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('load', measure);
+    };
   }, []);
 
   return (
