@@ -9,7 +9,7 @@ export const education = [
     institution: 'American International University-Bangladesh (AIUB)',
     lines: ['Current CGPA : 3.71 / 4.00', '2023 — Present'],
     year: '2023 — Present',
-    // document: '/img/AIUB_Certificate.jpg',
+    document: '/img/AIUB_Certificate.jpg',
   },
   {
     id: 'edu2',
@@ -19,7 +19,7 @@ export const education = [
     // lines: ['GPA : 4.75 / 5.00', 'Completed: 2021'],
     lines: ['Completed: 2021'],
     year: '2021',
-    // document: '/img/Hsc_certificate.jpg',
+    document: '/img/Hsc_certificate.jpg',
   },
   {
     id: 'edu3',
@@ -29,7 +29,7 @@ export const education = [
     // lines: ['GPA : 4.56 / 5.00', 'Completed: 2019'],
     lines: ['Completed: 2019'],
     year: '2019',
-    // document: '/img/Ssc_certifcate.jpg',
+    document: '/img/Ssc_certifcate.jpg',
   },
   {
     id: 'edu4',
@@ -39,7 +39,7 @@ export const education = [
     // lines: ['GPA : 5.00 / 5.00', 'Completed: 2016'],
     lines: ['Completed: 2016'],
     year: '2016',
-    // document: '/img/Jsc_certificate.jpg',
+    document: '/img/Jsc_certificate.jpg',
   },
 ];
 

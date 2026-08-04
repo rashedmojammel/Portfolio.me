@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Reveal from '@/components/ui/Reveal';
-// import EduModal from '@/components/modals/EduModal';
+import EduModal from '@/components/modals/EduModal';
 import { education, basicSkills, softSkills } from '@/data/education';
 import { CV_PDF } from '../../data/siteConfig';
 
@@ -68,7 +68,9 @@ export default function About() {
                     <strong>{item.title}</strong>
                     <span>{item.institution}</span>
                     {item.lines.map((line) => <em key={line}>{line}</em>)}
-                    {/* <span className="edu-view-chip"><i className="fas fa-file-pdf"></i> View Document</span> */}
+                    {item.document && (
+                      <span className="edu-view-chip"><i className="fas fa-file-pdf"></i> View Document</span>
+                    )}
                   </div>
                 </li>
               ))}
@@ -113,7 +115,7 @@ export default function About() {
         </a>
       </Reveal>
 
-      {/* <EduModal item={activeEdu} onClose={() => setActiveEdu(null)} /> */}
+      <EduModal item={activeEdu} onClose={() => setActiveEdu(null)} />
     </section>
   );
 }
