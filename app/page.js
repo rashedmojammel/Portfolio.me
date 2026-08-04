@@ -39,8 +39,8 @@ export default function Home() {
         <Hero />
         {/* <VideoCV /> */}
         <About />
-        <Academic />
-        <Parallax />
+        {/* <Academic /> */}
+        {/* <Parallax /> */}
         <Portfolio />
         <Skills />
         <Certificates />

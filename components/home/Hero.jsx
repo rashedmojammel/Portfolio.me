@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import SkillsOrbit from './SkillsOrbit';
 import ImageSlider from './ImageSlider';
-import ParticleBackground from './ParticleBackground';
 // import useTypingRoles from '@/hooks/useTypingRoles';
 // import { SOCIAL_LINKS } from '@/data/siteConfig';
 // import { typingRoles } from '@/data/skillsOrbit';
