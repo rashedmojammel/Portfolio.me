@@ -21,12 +21,15 @@ export default function CustomCursor() {
 
     let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0, raf;
 
+    // transform (GPU-composited) instead of left/top (forces layout every
+    // frame) — the trailing `translate(-50%,-50%)` replicates the static
+    // centering offset the CSS used to apply via the `transform` property,
+    // which this inline style now overrides.
     const onMove = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
       if (dotRef.current) {
-        dotRef.current.style.left = mouseX + 'px';
-        dotRef.current.style.top = mouseY + 'px';
+        dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
       }
     };
     document.addEventListener('mousemove', onMove);
@@ -35,8 +38,7 @@ export default function CustomCursor() {
       ringX += (mouseX - ringX) * 0.12;
       ringY += (mouseY - ringY) * 0.12;
       if (ringRef.current) {
-        ringRef.current.style.left = ringX + 'px';
-        ringRef.current.style.top = ringY + 'px';
+        ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
       }
       raf = requestAnimationFrame(animate);
     };
