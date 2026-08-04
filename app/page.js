@@ -30,26 +30,27 @@ export default function Home() {
   return (
     <>
       {/* StarField is rendered once, site-wide, in app/layout.js */}
-      <SmoothScroll />
-      <Loader />
-      <ScrollProgress />
-      <CustomCursor />
-      <Header />
+      <SmoothScroll>
+        <Loader />
+        <ScrollProgress />
+        <CustomCursor />
+        <Header />
 
-      <Hero />
-      {/* <VideoCV /> */}
-      <About />
-      <Parallax />
-      <Portfolio />
-      <Skills />
-      <Certificates />
-      <Hobbies />
-      <GithubActivity />
-      <Contact />
+        <Hero />
+        {/* <VideoCV /> */}
+        <About />
+        <Parallax />
+        <Portfolio />
+        <Skills />
+        <Certificates />
+        <Hobbies />
+        <GithubActivity />
+        <Contact />
 
-      <Footer />
-      <BackToTop />
-      <AIChatWidgetLoader />
+        <Footer />
+        <BackToTop />
+        <AIChatWidgetLoader />
+      </SmoothScroll>
     </>
   );
 }
