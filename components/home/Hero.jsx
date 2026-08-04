@@ -33,7 +33,7 @@ export default function Hero() {
 
   return (
     <section className="home" id="home">
-      <ParticleBackground />
+      {/* <ParticleBackground /> */}
 
       <div className="home-bg-glow">
         <SkillsOrbit />

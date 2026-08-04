@@ -35,3 +35,31 @@ export const homeImages = [
 ];
 
 export const typingRoles = ['Software Engineer', 'Full-Stack Developer', 'Problem Solver'];
+
+export const skillCloudSlugs = [
+  'html5',
+  'css3', // if this one doesn't render, try 'css' — renamed in Simple Icons v14
+  'javascript',
+  'react',
+  'nextdotjs',
+  'nodedotjs',
+  'express',
+  'tailwindcss',
+  'bootstrap',
+  'python',
+  'cplusplus',
+  'java',
+  'php',
+  'mysql',
+  'mongodb',
+  'firebase',
+  'git',
+  'github',
+  'vercel',
+  'figma',
+  'canva',
+  'postman',
+  'linux',
+  'notion',
+]
+ 

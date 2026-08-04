@@ -1,5 +1,6 @@
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import './globals.css';
+import StarField from '@/components/layout/StarField';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -30,7 +31,10 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
         <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
       </head>
-      <body>{children}</body>
+      <body>
+        <StarField  />
+        {children}
+        </body>
     </html>
   );
 }

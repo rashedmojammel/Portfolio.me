@@ -2,6 +2,7 @@
 // Edit this file to add/remove/update a project — the UI updates automatically.
 
 export const projects = [
+
   {
     id: 'fable',
     tag: 'Next.js · Node.js · Express · MongoDB · Stripe',
@@ -49,6 +50,79 @@ export const projects = [
       { label: 'Live Site', icon: 'fa-solid fa-link', href: 'https://pet-adoption-platform-client-w1g8.vercel.app/' },
     ],
   },
+  {
+  id: 'roomfinder',
+  tag: 'Next.js · TypeScript · Express · MongoDB · Better Auth',
+  title: 'RoomFinder — Room & Apartment Rental Marketplace',
+  cardDesc: 'Broker-free room rental platform with verified listings, booking flow & admin approval.',
+  modalTag: 'Full-Stack Web Application',
+  description:
+    'Built a three-role (tenant/owner/admin) room rental marketplace connecting tenants directly with room owners. Implemented search & filter, a booking request flow with owner approval/rejection, post-booking star ratings, and in-app notifications. Owners manage listings via drag-and-drop photo upload (imgbb), with every new or edited listing requiring admin approval before going public. Auth is handled with Better Auth (email/password + Google OAuth, JWT-based authorization between the Next.js frontend and Express backend, verified via JWKS with no shared secret). Admins get a full analytics dashboard (Recharts) covering users, listings, and bookings.',
+  tech: [
+    { icon: 'fab fa-react', label: 'Next.js' },
+    { label: 'TypeScript', textOnly: true },
+    { icon: 'fab fa-node-js', label: 'Node.js' },
+    { label: 'Express.js', textOnly: true },
+    { icon: 'fas fa-database', label: 'MongoDB' },
+    { label: 'Better Auth', textOnly: true },
+    { icon: 'fas fa-wind', label: 'Tailwind CSS' },
+  ],
+  screenshot: '/img/projects/RoomFinder.png',
+  liveUrl: 'https://room-finder-client-two.vercel.app/',
+  links: [
+    { label: 'GitHub Repository', icon: 'fab fa-github', href: 'https://github.com/rashedmojammel/RoomFinder-Client' },
+    { label: 'Live Site', icon: 'fa-solid fa-link', href: 'https://room-finder-client-two.vercel.app/' },
+  ],
+},{
+  id: 'fundspark',
+  tag: 'Next.js · TypeScript · Express · MongoDB · Stripe',
+  title: 'FundSpark — Credit-Based Crowdfunding Platform',
+  cardDesc: 'Crowdfunding platform where supporters back campaigns with credits, creators cash out.',
+  modalTag: 'Full-Stack Web Application',
+  description:
+    'Built a three-role (supporter/creator/admin) crowdfunding platform running on a credit system instead of direct payments. Supporters buy credits via Stripe Checkout (webhook-based, idempotent crediting) and contribute them to campaigns with optimistic UI. Creators launch campaigns with ImgBB cover uploads (admin review required before going live), manage incoming contributions, and request payouts of raised credits. Admins moderate campaigns, manage user roles, resolve reports, and mark withdrawals paid. Auth is handled with Better Auth, backed by MongoDB, with the frontend minting short-lived JWTs for every call to the separate Express API backend. Every fetch (TanStack Query) has a loading skeleton, error state with retry, and empty state, and a notification bell tracks every cross-user state change in real time.',
+  tech: [
+    { icon: 'fab fa-react', label: 'Next.js' },
+    { label: 'TypeScript', textOnly: true },
+    { icon: 'fab fa-node-js', label: 'Node.js' },
+    { label: 'Express.js', textOnly: true },
+    { icon: 'fas fa-database', label: 'MongoDB' },
+    { icon: 'fa-brands fa-stripe', label: 'Stripe' },
+    { label: 'Better Auth', textOnly: true },
+    { icon: 'fas fa-wind', label: 'Tailwind CSS' },
+  ],
+  screenshot: '/img/projects/FundSpark.png',
+  liveUrl: 'https://crowdfund-client-one.vercel.app/',
+  links: [
+    { label: 'GitHub Repository', icon: 'fab fa-github', href: 'https://github.com/rashedmojammel/crowdfund-client' },
+    { label: 'Live Site', icon: 'fa-solid fa-link', href: 'https://crowdfund-client-one.vercel.app/' },
+  ],
+},
+{
+  id: 'tripplanner',
+  tag: 'Next.js · TypeScript · Express · MongoDB · AI',
+  title: 'TripPlanner — AI-Powered Travel Platform',
+  cardDesc: 'Trip discovery platform with an AI travel concierge and AI-assisted listing generation.',
+  modalTag: 'Full-Stack Web Application',
+  description:
+    'Built a three-role (traveler/organizer/admin) travel platform for discovering curated trips, featuring two agentic AI tools. The AI Travel Concierge runs a two-step pipeline — a fast LLM extracts structured filters from the user\'s message, the backend queries MongoDB for matching trips, then a larger LLM answers grounded in the real catalog with streaming responses and clickable trip links, never inventing trips. The AI Listing Writer generates trip titles and descriptions from destination, duration, and category, with selectable tone and length and one-click regenerate. Implemented debounced search with URL-persisted filter state, a protected trip management flow, and Better Auth with email/password and Google OAuth. Built with TanStack Query for all data fetching and Recharts for landing-page statistics.',
+  tech: [
+    { icon: 'fab fa-react', label: 'Next.js' },
+    { label: 'TypeScript', textOnly: true },
+    { icon: 'fab fa-node-js', label: 'Node.js' },
+    { label: 'Express.js', textOnly: true },
+    { icon: 'fas fa-database', label: 'MongoDB' },
+    { label: 'Better Auth', textOnly: true },
+    { icon: 'fas fa-wind', label: 'Tailwind CSS' },
+  ],
+  screenshot: '/img/projects/TripPlanner.png',
+  liveUrl: 'https://trip-planner-client-navy.vercel.app',
+  links: [
+    { label: 'GitHub Repository', icon: 'fab fa-github', href: 'https://github.com/rashedmojammel/TripPlanner-Server' },
+    { label: 'Live Site', icon: 'fa-solid fa-link', href: 'https://trip-planner-client-navy.vercel.app' },
+  ],
+},
+
   {
   id: 'foodyy',
   tag: 'ASP.NET Core MVC · C# · EF Core · SQL Server',

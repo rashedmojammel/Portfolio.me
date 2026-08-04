@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Reveal from '@/components/ui/Reveal';
-import { CONTACT_INFO, CONTACT_SOCIAL_LINKS, GOOGLE_SHEET_SCRIPT_URL } from '../../data/siteConfig';
+import { CONTACT_INFO, CONTACT_SOCIAL_LINKS } from '../../data/siteConfig';
 
 export default function Contact() {
   const [status, setStatus] = useState({ text: '', color: '' });
@@ -10,19 +10,43 @@ export default function Contact() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (sending) return;
+
     setSending(true);
+    setStatus({ text: '', color: '' });
+
     const form = e.target;
+    const payload = Object.fromEntries(new FormData(form));
 
     try {
-      await fetch(GOOGLE_SHEET_SCRIPT_URL, {
+      // Same origin now, so no-cors is gone — which means we can finally
+      // read the response and report real failures.
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        body: new FormData(form),
-        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       });
-      setStatus({ text: "✓ Message sent! I'll get back to you soon.", color: 'var(--gold)' });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setStatus({
+          text: `✗ ${data.error ?? 'Something went wrong. Please try again.'}`,
+          color: '#e06c6c',
+        });
+        return;
+      }
+
+      setStatus({
+        text: "✓ Message sent! I'll get back to you soon.",
+        color: 'var(--gold)',
+      });
       form.reset();
     } catch {
-      setStatus({ text: '✗ Something went wrong. Please try again.', color: '#e06c6c' });
+      setStatus({
+        text: '✗ Network error. Please check your connection or email me directly.',
+        color: '#e06c6c',
+      });
     } finally {
       setSending(false);
       setTimeout(() => setStatus({ text: '', color: '' }), 6000);
@@ -63,26 +87,39 @@ export default function Contact() {
         </Reveal>
 
         <Reveal className="contact-right" delay={100}>
-          <form id="contact-form" name="submit-to-google-sheet" onSubmit={handleSubmit}>
+          <form id="contact-form" onSubmit={handleSubmit} noValidate>
             <div className="form-group">
               <label htmlFor="name">Your Name</label>
-              <input type="text" id="name" name="Name" placeholder="Rashedul Alam" required />
+              <input type="text" id="name" name="name" placeholder="Rashedul Alam" required autoComplete="name" />
             </div>
             <div className="form-group">
               <label htmlFor="email">Your Email</label>
-              <input type="email" id="email" name="Email" placeholder="hello@example.com" required />
+              <input type="email" id="email" name="email" placeholder="hello@example.com" required autoComplete="email" />
             </div>
             <div className="form-group">
               <label htmlFor="message">Message</label>
-              <textarea id="message" name="Message" rows={5} placeholder="Tell me about your project..."></textarea>
+              {/* was missing `required` — the form could be submitted empty */}
+              <textarea id="message" name="message" rows={5} placeholder="Tell me about your project..." required></textarea>
             </div>
+
+            {/* Honeypot. Bots fill it, people never see it. Not display:none —
+                some bots skip hidden fields. */}
+            <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, overflow: 'hidden' }}>
+              <label htmlFor="website">Website</label>
+              <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+            </div>
+
             <button type="submit" className="btn btn-gold submit-btn" disabled={sending}>
               <span id="btn-text">
                 <i className={sending ? 'fas fa-spinner fa-spin' : 'fas fa-paper-plane'}></i>{' '}
                 {sending ? 'Sending…' : 'Send Message'}
               </span>
             </button>
-            <p id="form-msg" style={{ color: status.color }}>{status.text}</p>
+
+            {/* aria-live so screen readers announce the result */}
+            <p id="form-msg" role="status" aria-live="polite" style={{ color: status.color }}>
+              {status.text}
+            </p>
           </form>
         </Reveal>
       </div>

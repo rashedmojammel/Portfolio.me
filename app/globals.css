@@ -2,8 +2,9 @@
    The original design is preserved as-is in styles.css.
    theme-aurora.css is an alternate theme — uncomment the import below to use it. */
 
-@import './styles.css';
+/* @import './styles.css'; */
 /* @import './theme-aurora.css'; */
+@import './style2.css';
 
 /* Point the design system's font variables at the self-hosted fonts
    loaded via next/font in app/layout.js (see --font-cormorant /

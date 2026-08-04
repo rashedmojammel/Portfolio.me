@@ -23,9 +23,9 @@ export default function Certificates() {
             <div className="cert-issuer">
               <i className="fas fa-award"></i> {cert.issuer}
             </div>
-            <a href={cert.href} target="_blank" rel="noopener noreferrer" className="cert-link">
+            {/* <a href={cert.href} target="_blank" rel="noopener noreferrer" className="cert-link">
               View Certificate <i className="fas fa-arrow-right"></i>
-            </a>
+            </a> */}
           </Reveal>
         ))}
       </div>
